@@ -48,9 +48,8 @@ def download_url(url):
         ydl.download([ url ])
 
     # split album if tracklist exists
-    album_path = get_album_path(album_name_without_extension)
     if tracklist:
-        # TODO: get full album path
+        album_path = get_album_path(album_name_without_extension)
         split_album(album_path, tracklist)
 
 
