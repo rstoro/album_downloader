@@ -11,7 +11,7 @@ To circumvent this issue, I would toss the whole album in [Audacity](https://www
 
 A friend of mine mentioned how YouTube videos now have something called "chapters".  Chapters are a way of splitting a video on their website into multiple sections while still maintaining the integrity of the individual video.
 
-These chapters can be used to split the album into tracks automatically!
+These chapters can be used to split an album into tracks automatically!
 
 ## Special Thanks
-A extra special thank you goes out to Tankooni for the idea, and for helping me save precious, ticking time :)
+An extra special thank you goes out to Tankooni for the idea, and for helping me save precious, ticking time :)
