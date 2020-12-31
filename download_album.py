@@ -5,7 +5,6 @@ from os.path import isfile as os_path_isfile
 from os.path import isdir as os_path_isdir
 from os.path import exists as os_path_exists
 from subprocess import call as subprocess_call
-from datetime import datetime
 from argparse import ArgumentParser
 from re import match as re_match
 from re import compile as re_compile
