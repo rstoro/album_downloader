@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from os import listdir as os_listdir
 from os import mkdir as os_mkdir
+from os import remove as os_remove
 from os.path import isfile as os_path_isfile
 from os.path import isdir as os_path_isdir
 from os.path import exists as os_path_exists
@@ -49,8 +50,15 @@ def download_url(url):
 
     # split album if tracklist exists
     if tracklist:
+        # get album path
         album_path = get_album_path(album_name_without_extension)
+
+        # split
         split_album(album_path, tracklist)
+
+        # delete old file
+        os_remove(album_path)
+        
 
 
 def get_album_path(album_name_without_extension):
@@ -78,16 +86,17 @@ def split_album(album_path, tracklist):
             '-acodec copy',
             '-ss {start_time}', 
             '-to {end_time}', 
-            (f'"{album_name}/' + '{title}' + f'.{album_extension}"') ])
+            (f'"{album_name}/' + '{i} - {title}' + f'.{album_extension}"') ])
 
     # create and call the subprocess for each track
-    for track in tracklist:
+    for index, track in enumerate(tracklist):
         start_time = track.get('start_time', None)
         end_time = track.get('end_time', None)
         title = track.get('title', None)
 
+        # TODO: if it splits into more than 1000 chapters, order will not be preserved
         cmd = unformatted_cmd.format(start_time=start_time, 
-                end_time=end_time, title=title)
+                end_time=end_time, i=str(index).zfill(3), title=title)
         subprocess_call(cmd, shell=True)
     
 
