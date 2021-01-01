@@ -27,21 +27,16 @@ def validate_url(url):
 
 
 def download_url(url):
-    # create the options for audio download, and progress hooks
-    ydl_opts = { 'format': 'bestaudio/best', }
-
     # get metadata to format the filename and see if chapters exist
     with YoutubeDL() as ydl:
         info_dict = ydl.extract_info(url, download=False)
         tracklist = info_dict.get('chapters', None)
         title = info_dict.get('title', None)
-        file_id = info_dict.get('id', None)
 
     # NOTE: we do not know the extension until YoutubeDL downloads the file
     #       because we are downloading the highest audio quality which varies 
-    # add the filename to the output 
-    album_name_without_extension = f'{title}-{file_id}'
-    ydl_opts['outtmpl'] = album_name_without_extension + '.%(ext)s'
+    # create the options for audio download, and progress hooks
+    ydl_opts = { 'format': 'bestaudio/best', 'outtmpl': f'{title}' + '.%(ext)s' }
 
     # download the audio
     with YoutubeDL(ydl_opts) as ydl:
@@ -50,12 +45,12 @@ def download_url(url):
     # split album if tracklist exists
     if tracklist:
         # get album path
-        album_path = get_album_path(album_name_without_extension)
+        album_path = get_album_path(title)
 
         # split
         split_album(album_path, tracklist)
 
-        # delete old file
+        # clean-up
         os_remove(album_path)
 
 
