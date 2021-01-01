@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+
 from os import listdir as os_listdir
 from os import mkdir as os_mkdir
 from os import remove as os_remove
@@ -26,9 +28,7 @@ def validate_url(url):
 
 def download_url(url):
     # create the options for audio download, and progress hooks
-    ydl_opts = { 
-            'format': 'bestaudio/best', 
-    }
+    ydl_opts = { 'format': 'bestaudio/best', }
 
     # get metadata to format the filename and see if chapters exist
     with YoutubeDL() as ydl:
@@ -36,7 +36,6 @@ def download_url(url):
         tracklist = info_dict.get('chapters', None)
         title = info_dict.get('title', None)
         file_id = info_dict.get('id', None)
-
 
     # NOTE: we do not know the extension until YoutubeDL downloads the file
     #       because we are downloading the highest audio quality which varies 
@@ -58,7 +57,6 @@ def download_url(url):
 
         # delete old file
         os_remove(album_path)
-        
 
 
 def get_album_path(album_name_without_extension):
@@ -108,7 +106,6 @@ def parse_args():
     parser.add_argument('-u', '--url', required=True,
             action='store', dest='download_url', default=None, 
             help='the url to be downloaded.')
-
 
     args = parser.parse_args()
     return args
