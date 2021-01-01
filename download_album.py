@@ -100,7 +100,7 @@ def split_album(album_path, tracklist):
 
 def parse_args():
     program_description = ( 'Used to download an album from YouTube and split it' + 
-            'into seperate audio tracks using Audacity.' )
+            'into seperate audio tracks using FFMPEG.' )
 
     parser = ArgumentParser(description=program_description)
     parser.add_argument('-u', '--url', required=True,
