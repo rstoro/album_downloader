@@ -14,4 +14,4 @@ A friend of mine mentioned how YouTube videos now have something called "chapter
 These chapters can be used to split an album into tracks automatically!
 
 ## Special Thanks
-An extra special thank you goes out to Tankooni for the idea, and for helping me save precious, ticking time :)
+An extra special thank you goes out to [Tankooni](https://github.com/Tankooni) for the idea, and for helping me save precious, ticking time :)
