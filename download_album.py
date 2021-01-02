@@ -87,9 +87,11 @@ def split_album(album_path, tracklist):
         end_time = track.get('end_time', None)
         title = track.get('title', None)
 
-        # TODO: if it splits into more than 1000 chapters, order will not be preserved
+        # used to keep chapter order
+        index_pad_len = len(str(len(tracklist)))
+
         cmd = unformatted_cmd.format(start_time=start_time, 
-                end_time=end_time, i=str(index).zfill(3), title=title)
+                end_time=end_time, i=str(index).zfill(index_pad_len), title=title)
         subprocess_call(cmd, shell=True)
     
 
